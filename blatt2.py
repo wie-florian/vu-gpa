@@ -75,35 +75,53 @@
 # print()
 
 
-# Aufgabe 1.2:
-print('Aufgabe 1.2')
-# Funktionalität: TODO: Beschreibung der Funktionalität (1.2)
-# Implementierung:
-#       * TODO: Beschreibung der Implementierung (1.2)
-text = input("Geben Sie bitte einen Text ein: ")
-result = ''
-idx = 0
-while idx < len(text):
-    if text[idx] in '0123456789':
-        result = result + text[idx]
-    idx += 1
-print('Das Ergebnis:', result)
-print()
-
-# Alternative Implementierung als for-Schleife
-print('Aufgabe 1.2 mittels for:')
-# TODO: Ihre Implementierung (1.2) hier
-
-
-print()
-print()
+# # Aufgabe 1.2:
+# print('Aufgabe 1.2')
+# # Funktionalität: Die while loop durchsucht jedes Zeichen eines eingabe strings auf eine Ziffer und schreibt diese ins
+# #                 Ergebnis welches am Ende ausgegeben wird
+# # Implementierung:
+# #   Ein Index und ein leerer result string wird initialisiert. Die while loop läuft für jeden index im eingabe string
+# #   Mittels if wird der character im string mit dem aktuell index auf eine Zahl untersucht
+# #   wenn eine Zahl gefunden wird, wird diese in den result string am ende hinzugefügt.
+# #   Nachdem der ganze string gelesen wurde und die loop beendet ist, wird das ergebnis ausgegeben
+# text = input("Geben Sie bitte einen Text ein: ")
+# result = ''
+# idx = 0
+# while idx < len(text):
+#     if text[idx] in '0123456789':
+#         result = result + text[idx]
+#     idx += 1
+# print('Das Ergebnis:', result)
+# print()
+#
+# # Alternative Implementierung als for-Schleife
+# print('Aufgabe 1.2 mittels for:')
+# # TODO: Ihre Implementierung (1.2) hier
+#
+# result2 = ''
+# for i in range(0, len(text)):
+#     if text[i] in '0123456789':
+#         result2 = result2 + text[i]
+#
+# print('Das Ergebnis:', result2)
+# print()
+#
+# print()
+# print()
 
 
 # # Aufgabe 1.3:
 # print('Aufgabe 1.3')
-# # Funktionalität: TODO: Beschreibung der Funktionalität (1.3)
+# # Funktionalität: Von einer Startzahl werden die Schritte gezählt wie oft die Startzahl um 1% erhöht werden muss
+# #                 um die Zahl zu erreichen. Beispiel - Geldanlage. Wie viele Jahre dauert es ist ein Sparziel zu
+# #                 erreichen mit einer Startanlage (start) und dem Ziel als eingabe.
 # # Implementierung:
-# #       * TODO: Beschreibung der Implementierung (1.3)
+# #  Die while-loop läuft solange der Startwert kleiner als das Ziel ist und die maximale Schrittweise nicht erreicht ist.
+# #  *Zu Beginn user wird nach einem Ziel (int) gefragt.
+# #  *Die maximale Anzahl an Schritten sowie der Startwert werden als variablen festgelegt.
+# #  *Der Stepcounter wird auch ala Variable initialisiert (mit 0)
+# #  -- Am Ende wird die Anzahl der Schritte ausgegeben, welche nötig sind bis entweder start >= goal ist oder die maximale
+# #     Anzahl an Schritten erreicht wird.
 # goal = int(input('Bitte eine natürliche Zahl eingeben (int): '))
 # max_steps = 1000
 # steps = 0
@@ -117,21 +135,29 @@ print()
 # # sollte auch für andere natürliche Zahlen für budget und max_steps funktionieren.
 # print('Aufgabe 1.3 mittels for:')
 # # TODO: Ihre Implementierung (1.3) hier
+# start_step = 0
+# steps2 = 0
+# start = 49.99   # reinitialize start
+# for step in range(start_step, max_steps):
+#     if start < goal:
+#         start *= 1.01
+#         steps2 += 1
+# print('Das Ergebnis:', steps2)
 #
 #
 # print()
 # print()
-#
-#
-# # -------------
-# # Aufgabe 2
-# # -------------
-#
-# # 2.1
-# print('\nAufgabe 2.1')
-# # TODO
-#
-#
+
+
+# -------------
+# Aufgabe 2
+# -------------
+
+# 2.1
+print('\nAufgabe 2.1')
+# TODO
+
+
 # # 2.2
 # print('\nAufgabe 2.2')
 # # TODO
