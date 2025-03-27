@@ -91,28 +91,28 @@ print()
 print()
 print()
 
-# # Aufgabe 1.3:
-# print('Aufgabe 1.3')
-# # Funktionalität: TODO: Beschreibung der Funktionalität (1.3) [nur 3/4 benötigt]
-# # Implementierung:
-# #       * TODO: Beschreibung der Implementierung (1.3) [nur 3/4 benötigt]
-# line = input('Bitte einen Text eingeben: ')
-# value = 0
-# idx = 0
-# while idx < len(line) and value >= 0:
-#     if line[idx] in '0123456789':
-#         value += int(line[idx])
-#     else:
-#         value = -1
-#     idx += 1
-# print('Text war keine Zahl! Fehlercode:' if value < 0 else 'Ziffernsumme:', value)
-# print()
-#
-# # Alternative Implementierung als for-Schleife
-# print('Aufgabe 1.3 mittels for:')
-# # TODO: Ihre Implementierung (1.3) hier
-#
-#
+# Aufgabe 1.3:
+print('Aufgabe 1.3')
+# Funktionalität: TODO: Beschreibung der Funktionalität (1.3) [nur 3/4 benötigt]
+# Implementierung:
+#       * TODO: Beschreibung der Implementierung (1.3) [nur 3/4 benötigt]
+line = input('Bitte einen Text eingeben: ')
+value = 0
+idx = 0
+while idx < len(line) and value >= 0:
+    if line[idx] in '0123456789':
+        value += int(line[idx])
+    else:
+        value = -1
+    idx += 1
+print('Text war keine Zahl! Fehlercode:' if value < 0 else 'Ziffernsumme:', value)
+print()
+
+# Alternative Implementierung als for-Schleife
+print('Aufgabe 1.3 mittels for:')
+# TODO: Ihre Implementierung (1.3) hier
+
+
 # print()
 # print()
 
