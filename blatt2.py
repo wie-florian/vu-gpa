@@ -60,7 +60,7 @@
 # # Alternative Implementierung als while-Schleife
 # # sollte für alle natürliche Zahlen start ≤ stop gleiches Verhalten besitzen
 # print('Aufgabe 1.1 mittels while:')
-# # TODO: Ihre Implementierung (1.1) hier
+# Ihre Implementierung (1.1) hier
 # x = -25
 # numb = 0
 # while x in range(start, stop+1):
@@ -96,7 +96,7 @@
 #
 # # Alternative Implementierung als for-Schleife
 # print('Aufgabe 1.2 mittels for:')
-# # TODO: Ihre Implementierung (1.2) hier
+# Ihre Implementierung (1.2) hier
 #
 # result2 = ''
 # for i in range(0, len(text)):
@@ -134,7 +134,7 @@
 # # Alternative Implementierung als for-Schleife
 # # sollte auch für andere natürliche Zahlen für budget und max_steps funktionieren.
 # print('Aufgabe 1.3 mittels for:')
-# # TODO: Ihre Implementierung (1.3) hier
+# Ihre Implementierung (1.3) hier
 # start_step = 0
 # steps2 = 0
 # start = 49.99   # reinitialize start
