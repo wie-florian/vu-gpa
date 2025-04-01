@@ -1,0 +1,337 @@
+# -*- coding: utf-8 -*-
+# GPA 2025
+
+# -------------
+# Aufgabe 1
+# -------------
+
+
+# TODO:   count_unfollowed(line, symbol, blocks)
+
+
+# TODO:   fun_with_numbers(line)
+
+
+# TODO:   visualize_standings(p1, p2, ratio, length, p1_symb, p2_symb)
+
+
+# Enthält alle Aufrufe der Funktionen aus Aufgabe 1
+def exercise1():
+    # TODO: Ihre Aufrufe der Funktionen aus Aufgabe 1 hier
+    pass  # Python erlaubt keine leeren Funktionen, bitte löschen und durch echten Inhalt ersetzen
+
+
+# -------------
+# Aufgabe 2
+# -------------
+
+
+# TODO:   validate_floor_name(name)
+
+
+# TODO:   translate_floor_plan(name)
+
+
+# TODO:   print_translation(*floors)
+
+
+def exercise2():
+    # TODO: Ihre Aufrufe der Funktionen aus Aufgabe 2 hier
+    pass  # Python erlaubt keine leeren Funktionen, bitte löschen und durch echten Inhalt ersetzen
+
+
+# -------------
+# Aufgabe 3
+# -------------
+
+def word_guess_spaghetti(secret):
+    """ Implementiert ein Spiel zum Raten des Wortes secret
+
+    Die gesamte Implementierung des Spiels in einer "Wurst",
+    mit einigen Code-Wiederholungen und Entscheidungen fix kodiert.
+    Sie sollten den Code besser organisieren (u.a. in Funktionen
+    aufteilen, vielleicht lassen sich manche Wiederholungen auch
+    durch Schleifen abbilden).
+
+    Ablauf des Spiels:
+    Das Spiel zeigt die verdeckten Stellen des zu erratenden Wortes
+    an. Spieler:in gibt ein Zeichen ein, das Spiel merkt sich das
+    Zeichen als erraten. Wurden alle Zeichen des Wortes erraten
+    ist das Spiel gewonnen, hat das Wort noch nicht erratene Zeichen
+    geht es in die nächste Runde. Wurde nach 6 Versuchen das Wort
+    nicht vollständig aufgedeckt wurde das Spiel verloren, sonst
+    gewonnen.
+
+    Arguments:
+    secret -- der zu erratende String
+    """
+    word = secret.upper()
+    guesses = ''
+    situation = '_' * len(word)
+
+    msg = 'Spielstand: ' + situation + ' [0/6]'
+    diff = len(msg) - len('YOUR TURN')
+    print()
+    print('-' * (diff // 2) + 'YOUR TURN' + '-' * (diff - diff // 2))
+    print(msg)
+
+    guess = ''
+    while len(guess) != 1 or guess not in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' or guess in guesses:
+        guess = input('Welchen Buchstaben wählst du als nächstes? >').upper()
+        if len(guess) != 1:
+            print('Bitte immer genau ein Zeichen wählen!')
+        elif guess not in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':
+            print('Bitte einen Buchstaben A-Z wählen')
+        elif guess in guesses:
+            print('Kleiner Tipp: den hast du schon probiert!')
+    guesses += guess
+
+    situation = ''
+    for c in word:
+        if c in guesses:
+            situation += c
+        else:
+            situation += '_'
+    if '_' in situation:
+        msg = 'Spielstand: ' + situation + ' [1/6]'
+        diff = len(msg) - len('YOUR TURN')
+        print()
+        print('-' * (diff // 2) + 'YOUR TURN' + '-' * (diff - diff // 2))
+        print(msg)
+
+        guess = ''
+        while len(guess) != 1 or guess not in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' or guess in guesses:
+            guess = input('Welchen Buchstaben wählst du als nächstes? >').upper()
+            if len(guess) != 1:
+                print('Bitte immer genau ein Zeichen wählen!')
+            elif guess not in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':
+                print('Bitte einen Buchstaben A-Z wählen')
+            elif guess in guesses:
+                print('Kleiner Tipp: den hast du schon probiert!')
+        guesses += guess
+
+    situation = ''
+    for c in word:
+        if c in guesses:
+            situation += c
+        else:
+            situation += '_'
+    if '_' in situation:
+        msg = 'Spielstand: ' + situation + ' [2/6]'
+        diff = len(msg) - len('YOUR TURN')
+        print()
+        print('-' * (diff // 2) + 'YOUR TURN' + '-' * (diff - diff // 2))
+        print(msg)
+
+        guess = ''
+        while len(guess) != 1 or guess not in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' or guess in guesses:
+            guess = input('Welchen Buchstaben wählst du als nächstes? >').upper()
+            if len(guess) != 1:
+                print('Bitte immer genau ein Zeichen wählen!')
+            elif guess not in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':
+                print('Bitte einen Buchstaben A-Z wählen')
+            elif guess in guesses:
+                print('Kleiner Tipp: den hast du schon probiert!')
+        guesses += guess
+
+    situation = ''
+    for c in word:
+        if c in guesses:
+            situation += c
+        else:
+            situation += '_'
+    if '_' in situation:
+        msg = 'Spielstand: ' + situation + ' [3/6]'
+        diff = len(msg) - len('YOUR TURN')
+        print()
+        print('-' * (diff // 2) + 'YOUR TURN' + '-' * (diff - diff // 2))
+        print(msg)
+
+        guess = ''
+        while len(guess) != 1 or guess not in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' or guess in guesses:
+            guess = input('Welchen Buchstaben wählst du als nächstes? >').upper()
+            if len(guess) != 1:
+                print('Bitte immer genau ein Zeichen wählen!')
+            elif guess not in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':
+                print('Bitte einen Buchstaben A-Z wählen')
+            elif guess in guesses:
+                print('Kleiner Tipp: den hast du schon probiert!')
+        guesses += guess
+
+    situation = ''
+    for c in word:
+        if c in guesses:
+            situation += c
+        else:
+            situation += '_'
+    if '_' in situation:
+        msg = 'Spielstand: ' + situation + ' [4/6]'
+        diff = len(msg) - len('YOUR TURN')
+        print()
+        print('-' * (diff // 2) + 'YOUR TURN' + '-' * (diff - diff // 2))
+        print(msg)
+
+        guess = ''
+        while len(guess) != 1 or guess not in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' or guess in guesses:
+            guess = input('Welchen Buchstaben wählst du als nächstes? >').upper()
+            if len(guess) != 1:
+                print('Bitte immer genau ein Zeichen wählen!')
+            elif guess not in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':
+                print('Bitte einen Buchstaben A-Z wählen')
+            elif guess in guesses:
+                print('Kleiner Tipp: den hast du schon probiert!')
+        guesses += guess
+
+    situation = ''
+    for c in word:
+        if c in guesses:
+            situation += c
+        else:
+            situation += '_'
+    if '_' in situation:
+        msg = 'Spielstand: ' + situation + ' [5/6]'
+        diff = len(msg) - len('YOUR TURN')
+        print()
+        print('-' * (diff // 2) + 'YOUR TURN' + '-' * (diff - diff // 2))
+        print(msg)
+
+        guess = ''
+        while len(guess) != 1 or guess not in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' or guess in guesses:
+            guess = input('Welchen Buchstaben wählst du als nächstes? >').upper()
+            if len(guess) != 1:
+                print('Bitte immer genau ein Zeichen wählen!')
+            elif guess not in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':
+                print('Bitte einen Buchstaben A-Z wählen')
+            elif guess in guesses:
+                print('Kleiner Tipp: den hast du schon probiert!')
+        guesses += guess
+
+    situation = ''
+    for c in word:
+        if c in guesses:
+            situation += c
+        else:
+            situation += '_'
+    if '_' in situation:
+        msg = 'Lösung: ' + word + ' [Dein Ergebnis: ' + situation + ']'
+        diff = len(msg) - len('YOU LOST')
+        print()
+        print('-' * (diff // 2) + 'YOU LOST' + '-' * (diff - diff // 2))
+        print(msg)
+    else:
+        msg = 'Endstand: ' + word + ' [' + str(len(guesses)) + '/6]'
+        diff = len(msg) - len('YOU WON')
+        print()
+        print('-' * (diff // 2) + 'YOU WON' + '-' * (diff - diff // 2))
+        print(msg)
+
+
+def better_word_guess(secret, max_guesses):
+    # TODO: implementieren Sie die Funktionalität hier
+    pass
+
+
+# TODO: Mögliche Vorlage für eigene Funktion
+def my_func(arg1):
+    """ Kurzbeschreibung (1 Zeile)
+
+    Evtl. genauere Beschreibung, vor allem welche Voraussetzungen
+    die Argumente erfüllen müssen, damit die Funktion korrekt
+    arbeitet.
+
+    Argumentenliste:
+    - arg1: int, es muss arg1 > 0 gelten
+    """
+    pass
+
+
+# -------------
+# Aufgabe 4
+# -------------
+
+
+# -- Beispiel für eine Lösung/Antwort:
+
+# Funktionalität: Berechnet die Binärdarstellung der Zahl n
+#                 (= fügt die Reste der wiederholten Division von n durch 2 zu einem String zusammen)
+# Basisfall:     Die Zahl n ist kleiner 2 -> es wird 0 oder 1 zurückgegeben.
+# "Verkleinerung" des Problems im Rekursionsschritt:
+#                n wird halbiert (und falls nötig auf die nächste ganze Zahl abgerundet)
+#                Dadurch verkleinert sich die Distanz zum Basisfall n < 2 in jedem Schritt.
+# Berechnung der Lösung im Rekursionsschritt:
+#               Das Ergebnis des rekursiven Aufrufs (ein String) wird am Ende um den Rest der Division
+#               von n durch 2 erweitert (mittels Stringkonkatenation).
+
+# Annahme: n >= 0 ist vom Typ Integer
+def mystery_division(n):
+    if n < 2:
+        return str(n)
+    else:
+        return mystery_division(n // 2) + str(n % 2)
+
+# //-- Ende Beispiel
+
+
+# Funktionalität: TODO
+# Basisfall: TODO
+# "Verkleinerung" des Problems im Rekursionsschritt: TODO
+# Berechnung der Lösung im Rekursionsschritt: TODO
+def mystery_math(lower, upper):
+    """
+    lower -- int
+    upper -- int
+    """
+    if lower > upper:
+        return mystery_math(upper, lower)
+    if upper == lower:
+        return lower
+    if upper - lower == 1:
+        return lower + 0.5
+    else:
+        return mystery_math(lower + 1, upper - 1)
+
+
+# Funktionalität: TODO
+# Basisfall: TODO
+# "Verkleinerung" des Problems im Rekursionsschritt: TODO
+# Berechnung der Lösung im Rekursionsschritt: TODO
+def mystery_string(line):
+    """
+    line -- str mit len(line) >= 1
+    """
+    if len(line) == 1:
+        return line
+    ret = mystery_string(line[1:])
+    if ret[0] == '9':
+        return ret
+    else:
+        return line
+
+
+# Funktionalität: TODO
+# Basisfall: TODO
+# "Verkleinerung" des Problems im Rekursionsschritt: TODO
+# Berechnung der Lösung im Rekursionsschritt: TODO
+def mystery_test(prefix, line):
+    """
+    prefix -- str
+    line -- str
+    """
+    if prefix + line == 'apple':
+        return True
+    elif len(line) == 0:
+        return False
+    else:
+        return mystery_test(prefix + line[0], line[1:]) or mystery_test(prefix, line[1:])
+
+
+
+if __name__ == '__main__':
+    exercise1()
+    exercise2()
+
+    # Aufgabe 3:
+    # Falls Sie die Funktion ausprobieren wollen:
+    # word_guess_spaghetti('sommer')
+
+    # Aufgabe 4 hat keine geforderten Aufrufe, Sie können aber hier eigene Testfälle einfügen
