@@ -1,1 +1,2 @@
-VU GPA SoSe2025 - Florian Wie
+Florian Wieland
+Lectures on coding and assignments
