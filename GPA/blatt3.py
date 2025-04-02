@@ -5,21 +5,46 @@
 # Aufgabe 1
 # -------------
 
+def count_unfollowed(line, symbol, blocks):
+    # print(line)
+    count = 0  # Starte den counter
 
-# TODO:   count_unfollowed(line, symbol, blocks)
+    # for loop für jeden index in line außer den letzten
+    for i in range(len(line)-1):
+        # Test ob line[i] gleich dem symbol und ob der folgende nicht in blocks
+        if line[i] == symbol and line[i+1] not in blocks:
+            # print(line[i], line[i+1])
+            count += 1  # wenn zutrifft erhöhe counter um 1
 
+    # Teste ob das letzte Zeichen gleich dem Symbol, da vorher ausgelassen
+    # es gibt kein nachfolgendes zeichen, also muss dies nicht geprüft werden
+    if line[-1] == symbol:
+        count += 1
+
+    # print(count)
+    return count
 
 # TODO:   fun_with_numbers(line)
+def fun_with_numbers(line):
 
+    return
 
 # TODO:   visualize_standings(p1, p2, ratio, length, p1_symb, p2_symb)
 
 
 # Enthält alle Aufrufe der Funktionen aus Aufgabe 1
 def exercise1():
-    # TODO: Ihre Aufrufe der Funktionen aus Aufgabe 1 hier
-    pass  # Python erlaubt keine leeren Funktionen, bitte löschen und durch echten Inhalt ersetzen
+    # count_unfollowed('eis essen kennt keine grenzen', 'e', 'in')
+    # count_unfollowed('2025-02-29', '2', '-500')
+    # count_unfollowed('99 Luftballons, nicht 9', '9', '')
+    # count_unfollowed('Der Sommer kann kommen', 'm', 'mE')
 
+    fun_with_numbers('12?34/5?678')
+    fun_with_numbers('2025?')
+    fun_with_numbers('1.?2.3.4.5??6.?')
+    fun_with_numbers('nur 1 oder 2?')
+
+    return
 
 # -------------
 # Aufgabe 2
