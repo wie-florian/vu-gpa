@@ -26,24 +26,58 @@ def count_unfollowed(line, symbol, blocks):
 
 # TODO:   fun_with_numbers(line)
 def fun_with_numbers(line):
+    line = line + ' '   # add space after line so we can loop through the whole line
+    summe = 0
+    ignore_next = True
+    count =0
 
-    return
+    # print(line)
+    for i in range(len(line)):
+        if line[i].isdigit() and line[i+1] != '?':
+            if ignore_next:
+                ignore_next = False
+                # print(f"ignore {line[i]}")
+            else:
+                summe += int(line[i])
+                ignore_next = True
+                # print(f"add {line[i]}")
 
-# TODO:   visualize_standings(p1, p2, ratio, length, p1_symb, p2_symb)
+    # print(summe)
+    return summe
 
+
+def visualize_standings(p1, p2, ratio, length = 10, p1_symb = '#', p2_symb = '-'):
+    # Startet die Ausgabe mit [] um p1
+    ausgabe = f'[{str(p1)}]'
+    # p1_symb wird so oft hinzugefügt wie ratio*length abgerundet ist
+    # int schneidet komma einfach weg, somit wird immer abgerundet
+    # für p2_symb wird genau umgekehrt gearbeitet, somit werden es auch nie mehr symbole als length
+    ausgabe += p1_symb * int(ratio * length)
+    ausgabe += p2_symb * (length - int(ratio * length))
+    # Zum Abschluss noch p2 anhängen
+    ausgabe += f'[{str(p2)}]'
+    # print(ausgabe)
+    return ausgabe
 
 # Enthält alle Aufrufe der Funktionen aus Aufgabe 1
 def exercise1():
-    # count_unfollowed('eis essen kennt keine grenzen', 'e', 'in')
-    # count_unfollowed('2025-02-29', '2', '-500')
-    # count_unfollowed('99 Luftballons, nicht 9', '9', '')
-    # count_unfollowed('Der Sommer kann kommen', 'm', 'mE')
+    count_unfollowed('eis essen kennt keine grenzen', 'e', 'in')
+    count_unfollowed('2025-02-29', '2', '-500')
+    count_unfollowed('99 Luftballons, nicht 9', '9', '')
+    count_unfollowed('Der Sommer kann kommen', 'm', 'mE')
 
     fun_with_numbers('12?34/5?678')
     fun_with_numbers('2025?')
     fun_with_numbers('1.?2.3.4.5??6.?')
     fun_with_numbers('nur 1 oder 2?')
 
+    visualize_standings('Player1', 'Player2', 0.5, 10, '#', '-')
+    visualize_standings('Player1', 'Player2', 0.5)
+    visualize_standings('Player1', 'Player2', 0.5, 8)
+    visualize_standings('Red', 'Blue', 0.75, p1_symb='>', p2_symb=':')
+    visualize_standings('Ryu', 'Ken', 0.2, 11)
+    visualize_standings('Ryu', 'Ken', 0.09, 10)
+    
     return
 
 # -------------
