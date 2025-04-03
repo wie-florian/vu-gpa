@@ -28,7 +28,6 @@ def fun_with_numbers(line):
     line = line + ' '   # add space after line so we can loop through the whole line
     summe = 0
     ignore_next = True
-    count =0
 
     # print(line)
     for i in range(len(line)):
@@ -111,7 +110,7 @@ def translate_floor_plan(name):
     if name[-1] == 'F':
         floor -= 1
     elif name[-1] == 'B':
-        floor = -(floor)
+        floor = -floor
 
     # print(type(floor))
     return floor
