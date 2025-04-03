@@ -24,7 +24,6 @@ def count_unfollowed(line, symbol, blocks):
     # print(count)
     return count
 
-# TODO:   fun_with_numbers(line)
 def fun_with_numbers(line):
     line = line + ' '   # add space after line so we can loop through the whole line
     summe = 0
@@ -44,7 +43,6 @@ def fun_with_numbers(line):
 
     # print(summe)
     return summe
-
 
 def visualize_standings(p1, p2, ratio, length = 10, p1_symb = '#', p2_symb = '-'):
     # Startet die Ausgabe mit [] um p1
@@ -83,26 +81,99 @@ def exercise1():
 # -------------
 # Aufgabe 2
 # -------------
+def validate_floor_name(name):
+    """
+    Validating if name is a valid japanese floor name.
 
+    :param name: to be tested floorname
+    :return: True if name is valid, False otherwise
+    """
+    flag = True # Using a flag that is true by default, and set to false if some criteria are not met
 
-# TODO:   validate_floor_name(name)
+    if name[-1] not in 'BF':    # Test if last is B or F
+        flag = False
+    for i in range(len(name)-1):    # Check if every character is an int except last
+        if name[i] not in '0123456789':
+            flag = False
+    if name[0] not in '123456789':  # Check if first digit is a 0
+        flag = False
 
+    # print(flag)
+    return flag
 
-# TODO:   translate_floor_plan(name)
+def translate_floor_plan(name):
+    """
+    Translate japanese floor to western floor.
+    :param name: to be tested
+    :return: translated floor as int
+    """
+    floor = int(name[:-1])
+    if name[-1] == 'F':
+        floor -= 1
+    elif name[-1] == 'B':
+        floor = -(floor)
 
+    # print(type(floor))
+    return floor
 
-# TODO:   print_translation(*floors)
+def print_translation(*floors):
+    """
+    Write a text based on the translated floor names.
+    :param floors: any number of floors
+    :return: text as str
+    """
+    ausgabe = 'Kein Stock\n\n'  # default return
+    valid_floors = []   # initializing list for validating if floor name is correct
+    translated_floors = []  # initializing list for translated floor names
 
+    for floor in floors:    # validating all floor in floors
+        if validate_floor_name(floor):
+            # print(floor)
+            valid_floors.append(floor)  # append floor if it is valid
+
+    for floor in valid_floors:  # translating all valid floors
+        translated_floors.append(translate_floor_plan(floor))
+
+    if translated_floors:   # if translated floors is not empty, overwrite ausgabe with new text
+        i = 0
+        first = True    # to flag the first floor
+        while i < len(translated_floors):
+            if first:   # different text for first floor
+                ausgabe = f'Da lief ich in den {translated_floors[i]}. Stock\n'
+                first = False   # setting flag after this
+            else:   # text for all other floors
+                ausgabe += f'dann lief ich in den {translated_floors[i]}. Stock\n'
+            if i == len(translated_floors) - 1: # if end of list is reached, append ending
+                ausgabe += '... und aus.\n\n'
+            i += 1
+
+    # print(valid_floors)
+    # print(translated_floors)
+    # print(ausgabe)
+    return str(ausgabe)
 
 def exercise2():
-    # TODO: Ihre Aufrufe der Funktionen aus Aufgabe 2 hier
-    pass  # Python erlaubt keine leeren Funktionen, bitte löschen und durch echten Inhalt ersetzen
+    validate_floor_name('1F')
+    validate_floor_name('0F')
+    validate_floor_name('F')
+    validate_floor_name('2A')
+    validate_floor_name('5B')
+    validate_floor_name('12F')
+    validate_floor_name('0123F')
+
+    translate_floor_plan('1F')
+    translate_floor_plan('1B')
+    translate_floor_plan('10F')
+
+    print_translation('0F', '1F', '2F', '3F', '4', '5F', '06F')
+    print_translation('1B', 'Dach', '7F', '5B', '12F', '00')
+    print_translation('0F', '0B', '1', '-2F')
+    print_translation()
 
 
 # -------------
 # Aufgabe 3
 # -------------
-
 def word_guess_spaghetti(secret):
     """ Implementiert ein Spiel zum Raten des Wortes secret
 
