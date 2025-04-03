@@ -401,7 +401,7 @@ def better_word_guess(secret, max_guesses: int = False):
 
     if win:
         print(f'\n\nGut gemacht, das Wort war {secret}.\n'
-              f'Du hast es in {len(guesses)} von {max_guesses} Versuchen geschafft.')
+              f'Du hast {counter} von {max_guesses} Leben verbraucht.')
     elif win is False:
         print(f'\n\nLeider verloren, das Wort war {secret}.')
 
@@ -449,23 +449,23 @@ def welcome(secret, max_guesses):
     :param max_guesses: max_guesses defined by game
     :return: max_guesses
     """
-
+    max_guesses, max_guesses_msg = setting_max_guesses(secret, max_guesses)
     # Welcome Message for the game
     wel_msg = 'Willkommen zu better_word_guess!'
     print('#' + '-' * (len(wel_msg)-2) + '#')
     print(wel_msg)
     print('#' + '-' * (len(wel_msg)-2) + '#')
     print(f'Das Geheime Wort hat {len(secret)} Zeichen.')
-    print(f'Du hast {max_guesses} Versuche.')
+    print(f'Du hast {max_guesses} Leben.')
     print(f'({max_guesses_msg})')
 
     return max_guesses
 
 
-better_word_guess('apple', 2)
-
-
+# better_word_guess('apple', 2)
 # word_guess_spaghetti('apple')
+
+
 # -------------
 # Aufgabe 4
 # -------------
