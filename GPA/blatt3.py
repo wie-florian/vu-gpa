@@ -355,25 +355,117 @@ def word_guess_spaghetti(secret):
         print(msg)
 
 
-def better_word_guess(secret, max_guesses):
-    # TODO: implementieren Sie die Funktionalität hier
-    pass
+def better_word_guess(secret, max_guesses: int = False):
+    """
+    Game for guessing a secret word.
+    :param secret: str to be guessed
+    :param max_guesses: number of maximum guesses before losing
+    :return:
+    """
+    win = False
+    word = str(secret).upper()
+    max_guesses = welcome(secret, max_guesses)
+
+    counter = 0
+    guesses = ''
+    situation = '_' * len(word)
+
+    while not win and counter <= max_guesses:
+        situation = ''
+        for c in word:
+            if c in guesses:
+                situation += c
+            else:
+                situation += '_'
+        if '_' in situation:
+            msg = 'Spielstand: ' + situation + f' [{counter}/{max_guesses}]'
+            diff = len(msg) - len('YOUR TURN')
+            print()
+            print('-' * (diff // 2) + 'YOUR TURN' + '-' * (diff - diff // 2))
+            print(msg)
+
+            guess = ''
+            while len(guess) != 1 or guess not in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' or guess in guesses:
+                guess = input('Welchen Buchstaben wählst du als nächstes? >').upper()
+                if len(guess) != 1:
+                    print('Bitte immer genau ein Zeichen wählen!')
+                elif guess not in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':
+                    print('Bitte einen Buchstaben A-Z wählen')
+                elif guess in guesses:
+                    print('Kleiner Tipp: den hast du schon probiert!')
+            guesses += guess
+            if guess not in word:
+                counter += 1
+        else:
+            win = True
+
+    if win:
+        print(f'\n\nGut gemacht, das Wort war {secret}.\n'
+              f'Du hast es in {len(guesses)} von {max_guesses} Versuchen geschafft.')
+    elif win is False:
+        print(f'\n\nLeider verloren, das Wort war {secret}.')
+
+    # print(max_guesses)
+    return
 
 
-# TODO: Mögliche Vorlage für eigene Funktion
-def my_func(arg1):
-    """ Kurzbeschreibung (1 Zeile)
+def setting_max_guesses(secret, max_guesses):
+    """ Setting max_guesses for better_word_guess.
 
-    Evtl. genauere Beschreibung, vor allem welche Voraussetzungen
-    die Argumente erfüllen müssen, damit die Funktion korrekt
-    arbeitet.
+    Handling wrong max_guesses input or too high max_guesses.
 
     Argumentenliste:
-    - arg1: int, es muss arg1 > 0 gelten
+    - len_secrets: int zur Berechnung fals max_guesses nicht angegeben wurde
+    - max_guesses: int oder False, falls max_guesses nicht angegeben wurde
+
+    return: int max_guesses, max_guesses_msg (Message for max_guesses)
     """
-    pass
+    max_guesses_msg = ''
+    len_secrets = len(secret)
+
+    if max_guesses is False:
+        max_guesses = len_secrets
+        max_guesses_msg += 'max_guesses wurde nicht angegeben'
+    elif type(max_guesses) is not int:
+        max_guesses = len_secrets
+        max_guesses_msg += 'max_guesses sollte ein int sein.'
+    elif int(max_guesses) > len_secrets*2:
+        max_guesses_msg += f'{max_guesses} Versuche brauchst du wirklich nicht.'
+        max_guesses = len_secrets*2
+    elif int(max_guesses) < 1:
+        max_guesses = len_secrets
+        max_guesses_msg += 'Weniger als 1 Versuch geht leider nicht.'
+    elif max_guesses < len_secrets:
+        max_guesses_msg += 'Ich will mal nicht so sein, du bekommst ein paar mehr Versuche.'
+        max_guesses = len_secrets
+
+    # print(max_guesses_msg)
+    return int(max_guesses), max_guesses_msg
+
+def welcome(secret, max_guesses):
+    """
+    Welcome Message for better_word_guess.
+    :param secret: to be guessed, given as string by game
+    :param max_guesses: max_guesses defined by game
+    :return: max_guesses
+    """
+
+    # Welcome Message for the game
+    wel_msg = 'Willkommen zu better_word_guess!'
+    print('#' + '-' * (len(wel_msg)-2) + '#')
+    print(wel_msg)
+    print('#' + '-' * (len(wel_msg)-2) + '#')
+    print(f'Das Geheime Wort hat {len(secret)} Zeichen.')
+    print(f'Du hast {max_guesses} Versuche.')
+    print(f'({max_guesses_msg})')
+
+    return max_guesses
 
 
+better_word_guess('apple', 2)
+
+
+# word_guess_spaghetti('apple')
 # -------------
 # Aufgabe 4
 # -------------
