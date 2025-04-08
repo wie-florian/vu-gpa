@@ -1,0 +1,50 @@
+Water,H2O
+Methane,CH4
+Ethanol,C2H5OH
+Glucose,C6H12O6
+Sucrose,C12H22O11
+Carbon dioxide,CO2
+Carbon monoxide,CO
+Oxygen,O2
+Nitrogen,N2
+Ammonia,NH3
+Hydrogen peroxide,H2O2
+Acetic acid,CH3COOH
+Formaldehyde,CH2O
+Benzene,C6H6
+Phenol,C6H5OH
+Toluene,C7H8
+Acetone,C3H6O
+Butane,C4H10
+Isobutane,C4H10
+Propane,C3H8
+Pentane,C5H12
+Hexane,C6H14
+Heptane,C7H16
+Octane,C8H18
+Ethanediol,C2H6O2
+Glycerol,C3H8O3
+Nitric acid,HNO3
+Sulfuric acid,H2SO4
+Hydrochloric acid,HCl
+Sodium chloride,NaCl
+Calcium carbonate,CaCO3
+Sodium bicarbonate,NaHCO3
+Sodium hydroxide,NaOH
+Potassium hydroxide,KOH
+Urea,CH4N2O
+Hydrogen cyanide,HCN
+Phosphoric acid,H3PO4
+Methanol,CH3OH
+Propionic acid,C2H5COOH
+Acetylene,C2H2
+Ethylene,C2H4
+Chloroform,CHCl3
+Caffeine,C8H10N4O2
+Citric acid,C6H8O7
+Lactic acid,C3H6O3
+Ascorbic acid,C6H8O6
+Aniline,C6H5NH2
+Formic acid,HCOOH
+Oxalic acid,C2H2O4
+Uric acid,C5H4N4O3

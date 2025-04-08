@@ -1,0 +1,95 @@
+Name;CAS;Sum Formula;P [bar] at 300 K
+2,3-Dimethylbutane;79-29-8;C6H14;0.388
+2-Methylpentane;107-83-5;C6H14;0.305
+3-Methylpentane;96-14-0;C6H14;0.2735
+n-Hexane;110-54-3;C6H14;0.219
+2,2-Dimethylbutane;75-83-2;C6H14;0.457
+n-Pentane;109-66-0;C5H12;0.7317
+2-Methylbutane;78-78-4;C5H12;0.9793
+Neopentane;463-82-1;C5H12;1.83
+n-Butane;106-97-8;C4H10;2.576
+Isobutane;75-28-5;C4H10;3.703
+n-Propane;74-98-6;C3H8;9.999
+n-Heptane;142-82-5;C7H16;0.0674
+2-Methylhexane;591-76-4;C7H16;0.0959
+2,4-Dimethylpentane;108-08-7;C7H16;0.1429
+2,2-Dimethylpentane;590-35-2;C7H16;0.152
+2,3-Dimethylpentane;565-59-3;C7H16;0.1
+3-Methylhexane;589-34-4;C7H16;0.0896
+3,3-Dimethylpentane;562-49-2;C7H16;0.1202
+2,2,3-Trimethylbutane;464-06-2;C7H16;0.1483
+3-Ethylpentane;617-78-7;C7H16;0.0844
+2,3,4-Trimethylpentane;565-75-3;C8H18;0.0395
+4-Methylheptane;589-53-7;C8H18;0.0304
+2,5-Dimethylhexane;592-13-2;C8H18;0.0449
+2,3-Dimethylhexane;584-94-1;C8H18;0.0343
+2,4-Dimethylhexane;589-43-5;C8H18;0.0447
+3,4-Dimethylhexane;583-48-2;C8H18;0.0319
+3,3-Dimethylhexane;563-16-6;C8H18;0.0418
+2,2-Dimethylhexane;590-73-8;C8H18;0.0501
+3-Ethylhexane;619-99-8;C8H18;0.0297
+3-Ethyl-3-methylpentane;1067-08-9;C8H18;0.034
+2,2,3,3-Tetramethylbutane;594-82-1;C8H18;0.0309
+n-Nonane;111-84-2;C9H20;0.00512
+2,2,5-Trimethylhexane;3522-94-9;C9H20;0.0246
+2,2,4-Trimethylhexane;16747-26-5;C9H20;0.0235
+2,2,3-Trimethylhexane;16747-25-4;C9H20;0.01695
+n-Decane;124-18-5;C10H22;0.001365
+Ethanol;64-17-5;C2H6O;0.08844
+1-Propanol;71-23-8;C3H8O;0.03174
+1-Butanol;71-36-3;C4H10O;0.0102
+2-Pentanol;6032-29-7;C5H12O;0.00929
+2-Methyl-2-butanol;75-85-4;C5H12O;0.02514
+1-Hexanol;111-27-3;C6H14O;0.0012727
+2-Hexanol;626-93-7;C6H14O;0.00444
+3-Hexanol;623-37-0;C6H14O;0.00854
+2-Methyl-2-pentanol;590-36-3;C6H14O;0.0131
+1,3-Dimethyl-1-butanol;108-11-2;C6H14O;0.01079
+2,3-Dimethyl-2-butanol;594-60-5;C6H14O;0.013385
+3,3-Dimethyl-2-butanol;464-07-3;C6H12O;0.011347
+2-Methyl-1-pentanol;105-30-6;C6H14O;0.003434
+2-Methyl-2-pentanol;590-36-3;C6H14O;0.009799
+3-Methyl-3-pentanol;77-74-7;C6H14O;0.01328
+1-Heptanol;111-70-6;C7H16O;0.000389
+2,3,3-Trimethyl-2-butanol;594-83-2;C7H16O;0.0103746
+1-Octanol;111-87-5;C8H18O;0.0001304
+2-Octanol;123-96-6;C8H18O;0.0003773
+3-Octanol;589-98-0;C8H18O;0.0004293
+4-Octanol;589-62-8;C8H18O;0.0005116
+Acetaldehyde;75-07-0;C2H4O;1.2883
+Acetone;67-64-1;C3H6O;0.33317
+Propanal;123-38-6;C3H6O;0.4577
+2-Methylpropanal;78-84-2;C4H8O;0.2501
+2-Butanone;78-93-3;C4H8O;0.13138
+Butanal;123-72-8;C4H8O;0.16261
+Pentanal;110-62-3;C5H10O;0.05043
+2-Pentanone;107-87-9;C5H10O;0.05194
+3-Pentanone;96-22-0;C5H10O;0.053358
+3-Methyl-2-butanone;563-80-4;C5H10O;0.04587
+Hexanal;66-25-1;C6H12O;0.016457
+2-Hexanone;591-78-6;C6H12O;0.005876
+3-Hexanone;589-38-8;C6H12O;0.02036
+3-Methyl-2-pentanone;565-61-7;C6H12O;0.02864
+4-Methyl-2-pentanone;108-10-1;C6H12O;0.02924
+3,3-Dimethyl-2-butanone;75-97-8;C6H12O;0.04711
+2-Heptanone;110-43-0;C7H14O;0.00224
+Heptanal;111-71-7;C7H14O;0.004476
+4-Heptanone;123-19-3;C7H14O;0.0018
+Octanal;124-13-0;C8H16O;0.003579
+2-Octanone;111-13-7;C8H16O;0.0017
+3-Octanone;106-68-3;C8H16O;0.00319
+4-Octanone;589-63-9;C8H16O;0.009638
+2,2,4-Trimethyl-3-pentanone;5857-36-3;C8H16O;0.003448
+Formic acid;64-18-6;CH2O2;0.06224
+Acetic acid;64-19-7;C2H4O2;0.02357
+Propanoic acid;79-09-4;C3H6O2;0.00431
+Butanoic acid;107-92-6;C4H8O2;0.001697
+Isobutyric acid;79-31-2;C4H8O2;0.002413
+Pentanoic acid;109-52-4;C5H10O2;0.0002783
+3-Methylbutanoic acid;503-74-2;C5H10O2;0.0007822
+Benzene;71-43-2;C6H6;0.1379
+Toluene;108-88-3;C7H8;0.04169
+Cyclohexanol;108-93-0;C6H12O;0.0009466
+Cycloheptanol;502-41-0;C7H14O;0.0003284
+Cyclohexanone;108-94-1;C6H10O;0.0060627
+Cyclobutanone;1191-95-3;C4H6O;0.06045
