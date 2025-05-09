@@ -14,25 +14,46 @@ import random
 
 
 def delete_direct_repeats(values: list) -> list:
-    end = []
-    print(f"values: {values}")
+    # Base case: Empty list
+    if not values:  # len(values) == 0
+        return []
+    # Base case: List with one element
     if len(values) == 1:
-        end.append(values[0])
-        return end
+        return values[:]  # Return a copy
+
+    first_element = values[0]
+    # Recursively process the rest of the list
+    remaining_processed = delete_direct_repeats(values[1:])
+
+    if not remaining_processed:
+        return [first_element]
+
+    # Compare first_element with first of the processed remainder
+    if first_element == remaining_processed[0]:
+        # only process the remaining since it is not kept
+        return remaining_processed
     else:
-        first = values[0]
-        second = values[1]
-        print(f"first: {first}, second: {second}")
-        if first == second:
-            return delete_direct_repeats(values[1:])
-        else:
-            end.append(first)
-            print(f"end: {end}")
-            return delete_direct_repeats(values[1:])
+        # return the first element and the remaining
+        return [first_element] + remaining_processed
 
 
 
-# TODO: 1.2: balance(load: list[int | float], begin: int, end: int) -> None
+def balance(load: list[int | float], begin: int, end: int) -> None:
+    # Base case: If begin index is not less than end index, then the pointers have met or crossed
+    if begin >= end:
+        return
+
+    # Recursive step: Calculate average of the elements at current begin and end
+    current_begin_value = load[begin]
+    current_end_value = load[end]
+    average = (current_begin_value + current_end_value) / 2.0
+
+    # Assign average
+    load[begin] = average
+    load[end] = average
+
+    # call balance for inner segment
+    balance(load, begin + 1, end - 1)
 
 
 # TODO: 1.3: collect(elements: list[tuple[str, int]], position: int, forbidden: set[int]) -> tuple[str, int]
@@ -40,36 +61,36 @@ def delete_direct_repeats(values: list) -> list:
 
 def exercise1() -> None:
     # TODO: weitere Testfälle bei Bedarf bitte einfügen
-    print('\n -- delete_direct_repeats')
-    print(delete_direct_repeats([1, 2, 2, 4, 3, 3, 3, 2]))
-    print(delete_direct_repeats(['a', 'a', 'a']))
-    print(delete_direct_repeats([7, 7, 4, 7, 7, 7]))
-    print(delete_direct_repeats([4.0]))
-    print(delete_direct_repeats([[1], [], []]))
-
-    print('\n -- balance')
-    load1 = [0, 4]
+    # print('\n -- delete_direct_repeats')
+    # print(delete_direct_repeats([1, 2, 2, 4, 3, 3, 3, 2]))
+    # print(delete_direct_repeats(['a', 'a', 'a']))
+    # print(delete_direct_repeats([7, 7, 4, 7, 7, 7]))
+    # print(delete_direct_repeats([4.0]))
+    # print(delete_direct_repeats([[1], [], []]))
+    #
+    # print('\n -- balance')
+    # load1 = [0, 4]
     # balance(load1, 0, 1)
-    print(load1)
-    load2 = [0, -3, 1]
+    # print(load1)
+    # load2 = [0, -3, 1]
     # balance(load2, 0, 2)
-    print(load2)
-    load3 = [1, 2, 9, 10]
+    # print(load2)
+    # load3 = [1, 2, 9, 10]
     # balance(load3, 0, 3)
-    print(load3)
-    load4 = [1, 2, 9, 10]
+    # print(load3)
+    # load4 = [1, 2, 9, 10]
     # balance(load4, 0, 2)
-    print(load4)
-    load5 = [0, 9, 9]
+    # print(load4)
+    # load5 = [0, 9, 9]
     # balance(load5, 1, 1)
-    print(load5)
+    # print(load5)
 
     print('\n -- collect')
-    # print(collect([('Welt', 1), ('Hallo', 2), ('schnöde', 0), ('!', 4)], 1, set()))
-    # print(collect([('Welt', 1), ('Hallo', 2), ('schnöde', 0), ('!', 4)], 1, {0}))
-    # print(collect([('Welt', 1), ('Hallo', 2), ('schnöde', 0), ('!', 4)], 0, {0}))
-    # print(collect([('a,b,c', 0), ('b', 3), ('a', 1), ('c', 4)], 2, set()))
-    # print(collect([('a,b,c', 0), ('b', 3), ('a', 1), ('c', 4)], 0, set()))
+    print(collect([('Welt', 1), ('Hallo', 2), ('schnöde', 0), ('!', 4)], 1, set()))
+    print(collect([('Welt', 1), ('Hallo', 2), ('schnöde', 0), ('!', 4)], 1, {0}))
+    print(collect([('Welt', 1), ('Hallo', 2), ('schnöde', 0), ('!', 4)], 0, {0}))
+    print(collect([('a,b,c', 0), ('b', 3), ('a', 1), ('c', 4)], 2, set()))
+    print(collect([('a,b,c', 0), ('b', 3), ('a', 1), ('c', 4)], 0, set()))
 
 
 # -------------
