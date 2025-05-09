@@ -574,7 +574,7 @@ def exercise4():
 # -------------
 
 if __name__ == '__main__':
-    # exercise1()
+    exercise1()
     # exercise2()
     # exercise3()
-    exercise4()
+    # exercise4()
