@@ -13,7 +13,23 @@ import random
 # -------------
 
 
-# TODO: 1.1: delete_direct_repeats(values: list) -> list
+def delete_direct_repeats(values: list) -> list:
+    end = []
+    print(f"values: {values}")
+    if len(values) == 1:
+        end.append(values[0])
+        return end
+    else:
+        first = values[0]
+        second = values[1]
+        print(f"first: {first}, second: {second}")
+        if first == second:
+            return delete_direct_repeats(values[1:])
+        else:
+            end.append(first)
+            print(f"end: {end}")
+            return delete_direct_repeats(values[1:])
+
 
 
 # TODO: 1.2: balance(load: list[int | float], begin: int, end: int) -> None
@@ -25,11 +41,11 @@ import random
 def exercise1() -> None:
     # TODO: weitere Testfälle bei Bedarf bitte einfügen
     print('\n -- delete_direct_repeats')
-    # print(delete_direct_repeats([1, 2, 2, 4, 3, 3, 3, 2]))
-    # print(delete_direct_repeats(['a', 'a', 'a']))
-    # print(delete_direct_repeats([7, 7, 4, 7, 7, 7]))
-    # print(delete_direct_repeats([4.0]))
-    # print(delete_direct_repeats([[1], [], []]))
+    print(delete_direct_repeats([1, 2, 2, 4, 3, 3, 3, 2]))
+    print(delete_direct_repeats(['a', 'a', 'a']))
+    print(delete_direct_repeats([7, 7, 4, 7, 7, 7]))
+    print(delete_direct_repeats([4.0]))
+    print(delete_direct_repeats([[1], [], []]))
 
     print('\n -- balance')
     load1 = [0, 4]
@@ -713,7 +729,7 @@ def exercise4():
 
 
 if __name__ == '__main__':
-    # exercise1()
+    exercise1()
     # exercise2()
-    test_player_input()
+    # test_player_input()
     # exercise4()
