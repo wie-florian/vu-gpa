@@ -1,0 +1,54 @@
+[2025-04-16 12:59:12]: switched on
+[2025-04-16 12:59:22]: coffee made (2)[water: 150; beans: 450]
+[2025-04-16 12:59:27]: water refill (240ml)
+[2025-04-16 12:59:29]: switched off (water: 290;beans: 450;decalc: 1)
+[2025-04-16 13:00:11]: switched on
+[2025-04-16 13:00:58]: water refill (50ml)
+[2025-04-16 13:01:00]: switched off (water: 340;beans: 450;decalc: 1)
+[2025-04-16 13:01:04]: switched on
+[2025-04-16 13:02:59]: switched on
+[2025-04-16 13:03:03]: switched off (water: 200;beans: 30;decalc: 0)
+[2025-04-16 13:03:06]: switched on
+[2025-04-16 13:03:29]: water refill (230ml)
+[2025-04-16 13:03:33]: coffee made (2)[water: 150; beans: 30]
+[2025-04-16 13:03:37]: water refill (120ml)
+[2025-04-16 13:03:38]: switched off (water: 400;beans: 0;decalc: 1)
+[2025-04-16 13:03:42]: switched on
+[2025-04-16 13:04:14]: switched on
+[2025-04-16 13:04:37]: water refill (230ml)
+[2025-04-16 13:04:41]: coffee made (2)[water: 150; beans: 30]
+[2025-04-16 13:04:44]: water refill (120ml)
+[2025-04-16 13:04:45]: switched off (water: 400;beans: 0;decalc: 1)
+[2025-04-16 13:04:51]: switched on
+[2025-04-16 13:07:43]: water refill (240ml)
+[2025-04-16 13:07:43]: beans refill (140g)
+[2025-04-16 13:07:47]: coffee made (2)[water: 150; beans: 140]
+[2025-04-16 13:07:52]: water refill (4ml)
+[2025-04-16 13:07:56]: water refill (140ml)
+[2025-04-16 13:07:58]: switched off (water: 534;beans: 140;decalc: 1)
+[2025-04-16 13:09:47]: switched on
+[2025-04-16 13:09:50]: water refill (230ml)
+[2025-04-16 13:09:54]: coffee made (3)[water: 225; beans: 45]
+[2025-04-16 13:09:57]: water refill (140ml)
+[2025-04-16 13:09:59]: switched off (water: 679;beans: 95;decalc: 2)
+[2025-04-16 13:13:27]: switched on
+[2025-04-16 13:13:33]: water refill (250ml)
+[2025-04-16 13:13:36]: coffee made (3)[water: 225; beans: 45]
+[2025-04-16 13:13:39]: water refill (120ml)
+[2025-04-16 13:13:40]: switched off (water: 824;beans: 50;decalc: 3)
+[2025-04-16 14:47:32]: beans refill (40g)
+[2025-04-16 14:47:37]: decalcify
+[2025-04-16 14:47:39]: switched off (water: 824;beans: 90;decalc: 0)
+[2025-04-16 15:13:29]: switched on
+[2025-04-16 15:15:15]: coffee made (2)[water: 150; beans: 30]
+[2025-04-16 15:15:25]: water refill (240ml)
+[2025-04-16 15:15:43]: water refill (0ml)
+[2025-04-16 15:15:54]: coffee made (2)[water: 150; beans: 30]
+[2025-04-16 15:15:58]: beans refill (40g)
+[2025-04-16 15:16:00]: decalcify
+[2025-04-16 15:16:02]: switched off (water: 764;beans: 70;decalc: 0)[2025-05-29 14:13:13]: Test1
+[2025-05-29 14:13:13]: Test2
+[2025-05-29 14:13:13]: decalcify
+[2025-05-29 14:13:13]: beans refill (500g)
+[2025-05-29 14:13:13]: coffee made (2)[water: 150; beans: 30]
+[2025-05-29 14:13:13]: switched off (water: 50;beans: 450;decalc: 1)
