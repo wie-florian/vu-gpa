@@ -482,77 +482,190 @@ def exercise6():
 
 
 class Employee:
-    # TODO: implement
-    pass
+    __LIFO_KEYWORD = 'lifo'  # Klassenvariable für 'LIFO' Stringvergleich (case-insensitive)
+    __DEFAULT_EMPTY_NAME = 'John/Jane Doe'  # Standardname für leere Namen
+
+    def __init__(self, name: str, management_level: int, organizes_work: str):
+        self.__name = name
+        self.__management_level = management_level
+
+        # Initialisiere __todos basierend auf organizes_work
+        if organizes_work.lower() == Employee.__LIFO_KEYWORD:
+            self.__todos = StackTODOs()
+        else:
+            self.__todos = QueueTODOs()
+
+    def get_name(self) -> str:
+        """
+        Gibt den Namen der Person zurück. Ist der Name leer, wird ein Default-Name zurückgegeben.
+        """
+        if self.__name:
+            return self.__name
+        else:
+            return Employee.__DEFAULT_EMPTY_NAME
+
+    def assign_task(self, task: str) -> None:
+        """Fügt den übergebenen String als neue Aufgabe zur Sammlung der ToDos hinzu."""
+        self.__todos.add_todo(task)
+
+    def completes_task(self) -> None:
+        """
+        Erzeugt eine Ausgabe abhängig davon, ob die Person noch offene Aufgaben hat, oder nicht.
+        """
+        task = self.__todos.do_todo()
+        if task is None:
+            print(f"{self.get_name()} hat gerade leider nichts zu tun - kein Fortschritt.")
+        else:
+            print(f"{self.get_name()} hat folgende Tätigkeit abgeschlossen: {task}")
+
+    def workload(self, clearance: int) -> str:
+        """
+        Gibt eine Beschreibung des Workloads der Person zurück.
+        Der Detailgrad hängt vom übergebenen Berechtigungslevel 'clearance' ab.
+        """
+        current_load = len(self.__todos)
+        if clearance > self.__management_level:
+            return f"{current_load} Aufgaben"
+        else:
+            if current_load < 2:
+                return 'LOW'
+            elif 2 <= current_load <= 3:
+                return 'MEDIUM'
+            else:  # current_load >= 4
+                return 'HIGH'
+
+    def peek_colleague(self, colleague) -> None:
+        """
+        Erzeugt eine Ausgabe zum Workload einer Kollegin, wie ihn die aufrufende Person sehen darf.
+        """
+        # Abruf der Workload des Kollegen mit dem Management-Level der aktuellen Person als Clearance
+        colleague_workload_info = colleague.workload(self.__management_level)
+
+        # Abruf des Namen des Kollegen über dessen get_name Methode
+        colleague_name = colleague.get_name()
+
+        # Abruf des Namen der aufrufenden Person (self) über deren get_name Methode
+        my_name = self.get_name()
+
+        print(f"[{my_name}]: Workload von {colleague_name} ist {colleague_workload_info}")
 
 
 def exercise7():
-    pass
-    # donna = Employee('Donna', 5, 'FIFO')
-    # michael = Employee('Michael', 10, 'LIFO')
-    # pepper = Employee('Pepper', 10, 'FIFO')
-    # dwight = Employee('Dwight', 2, 'LIFO')
-    # ryan = Employee('Ryan', 3, 'LIFO')
-    # bernd = Employee('Bernd', 5, 'LIFO')
-    # ulf = Employee('Ulf', 2, 'FIFO')
-    # doe = Employee('', 1, 'FIFO')
-    #
-    # print(donna.get_name())     # Donna
-    # print(doe.get_name())       # John/Jane Doe
-    #
-    # michael.assign_task('Rechnung erstellen')
-    # michael.assign_task('Kunden kontaktieren')
-    # ulf.assign_task('Kaffee kochen')
-    # ulf.assign_task('Kekse kaufen')
-    # donna.assign_task('Meeting vorbereiten')
-    # donna.assign_task('Tagesordnung erstellen')
-    # pepper.assign_task('Dampf machen')
-    # ulf.assign_task('Briefmarken kaufen')
-    # ryan.assign_task('Antrag durchlesen')
-    # ryan.assign_task('Antrag ablehnen')
-    # ulf.assign_task('Meetingraum putzen')
-    # ryan.assign_task('Schreibtisch aufräumen')
-    # pepper.assign_task('Streit schlichten')
-    # donna.assign_task('Anrufbeantworter einschalten')
-    # ulf.assign_task('Fenster öffnen')
-    #
-    # print('Donna Workload(5):', donna.workload(5))      # Donna Workload(5): MEDIUM
-    # print('Donna Workload (6):', donna.workload(6))     # Donna Workload (6): 3 Aufgaben
-    # print('Ryan Workload (5):', ryan.workload(5))       # Ryan Workload (5): 3 Aufgaben
-    # print('Bernd Workload (5):', bernd.workload(5))     # Bernd Workload (5): LOW
-    # print('Dwight Workload (11):', dwight.workload(11)) # Dwight Workload (11): 0 Aufgaben
-    # print('Dwight Workload (0):', dwight.workload(0))   # Dwight Workload (0): LOW
-    #
-    # pepper.peek_colleague(ulf)          # [Pepper]: Workload von Ulf ist 5 Aufgaben
-    # pepper.peek_colleague(michael)      # [Pepper]: Workload von Michael ist MEDIUM
-    # doe.peek_colleague(ulf)             # []: Workload von Ulf ist HIGH
-    # ulf.peek_colleague(dwight)          # [Ulf]: Workload von Dwight ist LOW
-    # pepper.peek_colleague(dwight)       # [Pepper]: Workload von Dwight ist 0 Aufgaben
-    #
-    # donna.completes_task()  # Donna hat folgende Tätigkeit abgeschlossen: Meeting vorbereiten
-    # donna.completes_task()  # Donna hat folgende Tätigkeit abgeschlossen: Tagesordnung erstellen
-    # donna.completes_task()  # Donna hat folgende Tätigkeit abgeschlossen: Anrufbeantworter einschalten
-    # donna.completes_task()  # Donna hat gerade leider nichts zu tun - kein Fortschritt.
-    #
-    # ryan.completes_task()   # Ryan hat folgende Tätigkeit abgeschlossen: Schreibtisch aufräumen
-    # ryan.completes_task()   # Ryan hat folgende Tätigkeit abgeschlossen: Antrag ablehnen
-    # ryan.completes_task()   # Ryan hat folgende Tätigkeit abgeschlossen: Antrag durchlesen
-    # ryan.completes_task()   # Ryan hat gerade leider nichts zu tun - kein Fortschritt.
-    # ryan.completes_task()   # Ryan hat gerade leider nichts zu tun - kein Fortschritt.
-    #
-    # pepper.peek_colleague(ryan) # [Pepper]: Workload von Ryan ist 0 Aufgaben
-    # pepper.peek_colleague(ulf)  # [Pepper]: Workload von Ulf ist 5 Aufgaben
-    # dwight.peek_colleague(ulf)  # [Dwight]: Workload von Ulf ist HIGH
-    # ulf.completes_task()        # Ulf hat folgende Tätigkeit abgeschlossen: Kaffee kochen
-    # ulf.completes_task()        # Ulf hat folgende Tätigkeit abgeschlossen: Kekse kaufen
-    # dwight.peek_colleague(ulf)  # [Dwight]: Workload von Ulf ist MEDIUM
-    # doe.peek_colleague(pepper)  # []: Workload von Pepper ist MEDIUM
+    donna = Employee('Donna', 5, 'FIFO')
+    michael = Employee('Michael', 10, 'LIFO')
+    pepper = Employee('Pepper', 10, 'FIFO')
+    dwight = Employee('Dwight', 2, 'LIFO')
+    ryan = Employee('Ryan', 3, 'LIFO')
+    bernd = Employee('Bernd', 5, 'LIFO')
+    ulf = Employee('Ulf', 2, 'FIFO')
+    doe = Employee('', 1, 'FIFO')
+
+    print(donna.get_name())     # Donna
+    print(doe.get_name())       # John/Jane Doe
+
+    michael.assign_task('Rechnung erstellen')
+    michael.assign_task('Kunden kontaktieren')
+    ulf.assign_task('Kaffee kochen')
+    ulf.assign_task('Kekse kaufen')
+    donna.assign_task('Meeting vorbereiten')
+    donna.assign_task('Tagesordnung erstellen')
+    pepper.assign_task('Dampf machen')
+    ulf.assign_task('Briefmarken kaufen')
+    ryan.assign_task('Antrag durchlesen')
+    ryan.assign_task('Antrag ablehnen')
+    ulf.assign_task('Meetingraum putzen')
+    ryan.assign_task('Schreibtisch aufräumen')
+    pepper.assign_task('Streit schlichten')
+    donna.assign_task('Anrufbeantworter einschalten')
+    ulf.assign_task('Fenster öffnen')
+
+    print('Donna Workload(5):', donna.workload(5))      # Donna Workload(5): MEDIUM
+    print('Donna Workload (6):', donna.workload(6))     # Donna Workload (6): 3 Aufgaben
+    print('Ryan Workload (5):', ryan.workload(5))       # Ryan Workload (5): 3 Aufgaben
+    print('Bernd Workload (5):', bernd.workload(5))     # Bernd Workload (5): LOW
+    print('Dwight Workload (11):', dwight.workload(11)) # Dwight Workload (11): 0 Aufgaben
+    print('Dwight Workload (0):', dwight.workload(0))   # Dwight Workload (0): LOW
+
+    pepper.peek_colleague(ulf)          # [Pepper]: Workload von Ulf ist 5 Aufgaben
+    pepper.peek_colleague(michael)      # [Pepper]: Workload von Michael ist MEDIUM
+    doe.peek_colleague(ulf)             # []: Workload von Ulf ist HIGH
+    ulf.peek_colleague(dwight)          # [Ulf]: Workload von Dwight ist LOW
+    pepper.peek_colleague(dwight)       # [Pepper]: Workload von Dwight ist 0 Aufgaben
+
+    donna.completes_task()  # Donna hat folgende Tätigkeit abgeschlossen: Meeting vorbereiten
+    donna.completes_task()  # Donna hat folgende Tätigkeit abgeschlossen: Tagesordnung erstellen
+    donna.completes_task()  # Donna hat folgende Tätigkeit abgeschlossen: Anrufbeantworter einschalten
+    donna.completes_task()  # Donna hat gerade leider nichts zu tun - kein Fortschritt.
+
+    ryan.completes_task()   # Ryan hat folgende Tätigkeit abgeschlossen: Schreibtisch aufräumen
+    ryan.completes_task()   # Ryan hat folgende Tätigkeit abgeschlossen: Antrag ablehnen
+    ryan.completes_task()   # Ryan hat folgende Tätigkeit abgeschlossen: Antrag durchlesen
+    ryan.completes_task()   # Ryan hat gerade leider nichts zu tun - kein Fortschritt.
+    ryan.completes_task()   # Ryan hat gerade leider nichts zu tun - kein Fortschritt.
+
+    pepper.peek_colleague(ryan) # [Pepper]: Workload von Ryan ist 0 Aufgaben
+    pepper.peek_colleague(ulf)  # [Pepper]: Workload von Ulf ist 5 Aufgaben
+    dwight.peek_colleague(ulf)  # [Dwight]: Workload von Ulf ist HIGH
+    ulf.completes_task()        # Ulf hat folgende Tätigkeit abgeschlossen: Kaffee kochen
+    ulf.completes_task()        # Ulf hat folgende Tätigkeit abgeschlossen: Kekse kaufen
+    dwight.peek_colleague(ulf)  # [Dwight]: Workload von Ulf ist MEDIUM
+    doe.peek_colleague(pepper)  # []: Workload von Pepper ist MEDIUM
 
 
 def the_office():
-    # TODO: eigenen Ablauf angeben
-    pass
+    # Neue Mitarbeiter und deren Arbeitsweise
+    pam = Employee('Pam', 3, 'FIFO')
+    jim = Employee('Jim', 4, 'LIFO')
+    angela = Employee('Angela', 5, 'LIFO')
+    creed = Employee('Creed', 1, 'FIFO')
 
+    print(f"Neue Mitarbeiter: {pam.get_name()}, {jim.get_name()}, {angela.get_name()}, {creed.get_name()}")
+
+    # Aufgaben zuweisen
+    pam.assign_task('Kundenanruf beantworten')
+    pam.assign_task('E-Mails sortieren')
+    pam.assign_task('Termine koordinieren')
+    pam.assign_task('Beschwerde bearbeiten')
+
+    jim.assign_task('Präsentation vorbereiten')
+    jim.assign_task('Bericht schreiben')
+    jim.assign_task('Neue Software testen')
+
+    angela.assign_task('Budget prüfen')
+    angela.assign_task('Mitarbeitergespräche führen')
+    angela.assign_task('Strategie planen')
+    angela.assign_task('Jahresbericht abschließen')
+    angela.assign_task('Bonusverteilung genehmigen')
+
+    creed.assign_task('Pflanzen gießen')
+
+    print(f"{pam.get_name()} Workload(3): {pam.workload(3)}")
+    print(f"{jim.get_name()} Workload(5): {jim.workload(5)}")
+    print(f"{angela.get_name()} Workload(5): {angela.workload(5)}")
+    print(f"{creed.get_name()} Workload(0): {creed.workload(0)}")
+
+    jim.peek_colleague(pam)
+    angela.peek_colleague(jim)
+    pam.peek_colleague(creed)
+
+    pam.completes_task()
+    jim.completes_task()
+    angela.completes_task()
+    creed.completes_task()
+
+    print(f"\n{pam.get_name()} Workload(3): {pam.workload(3)}")
+    print(f"{jim.get_name()} Workload(5): {jim.workload(5)}")
+    print(f"{angela.get_name()} Workload(5): {angela.workload(5)}")
+    print(f"{creed.get_name()} Workload(0): {creed.workload(0)}")
+
+    pam.completes_task()
+    pam.completes_task()
+    angela.completes_task()
+    angela.completes_task()
+    angela.completes_task()
+
+    print(f"{pam.get_name()} Workload(3): {pam.workload(3)}")
+    print(f"{jim.get_name()} Workload(5): {jim.workload(5)}")
 
 
 if __name__ == "__main__":
@@ -560,5 +673,6 @@ if __name__ == "__main__":
     # exercise2()
     # exercise3()
     # exercise4()
-    exercise6()
+    # exercise6()
     # exercise7()
+    # the_office()
