@@ -219,8 +219,34 @@ def exercise2():
 
 
 def can_beat(cards: list[tuple[str, int]], given: tuple[str, int]) -> bool:
-    # TODO: Ihre Lösung hier
-    return False
+    given_color, given_value = given[0], given[1]
+    n = len(cards)
+
+    # Suche index der ersten karte mit der gegebenen Farbe, wegen der Reihenfolge, ist dies die Karte mit dem höchsten wert für diese farbe sein.
+    low = 0
+    high = n - 1
+    first_color_idx = -1
+
+    while low <= high:
+        mid = (low + high) // 2
+        mid_card_color = cards[mid][0]
+
+        if mid_card_color < given_color:
+            low = mid + 1
+        elif mid_card_color > given_color:
+            high = mid - 1
+        else:
+            first_color_idx = mid
+            high = mid - 1
+
+    if first_color_idx == -1:
+        return False
+
+    # Wir haben den first_color_idx (höchster Wert für diese Farbe) -> überprüfen obWert höher als gegebener Wert
+    if cards[first_color_idx][1] > given_value:
+        return True
+    else:
+        return False
 
 
 def exercise3():
@@ -257,21 +283,45 @@ def min_before(values: list[int]) -> list[int]:
     return [min(values[:i]) for i in range(1, len(values))]
 
 
-# Laufzeit der gegebenen Funktion: O(TODO)
+# Laufzeit der gegebenen Funktion: O(n^2)
 
 
 # Annahme: len(values) >= 1
 def min_before_linear(values: list[int]) -> list[int]:
-    # TODO: Ihre Lösung mit linearer Laufzeit hier
-    return []
+    result = []
+    current_overall_min = values[0]
+
+    for i in range(1, len(values)):
+        result.append(current_overall_min)
+        current_overall_min = min(current_overall_min, values[i])
+
+    return result
 
 
-# kurze Begründung für lineare Laufzeit: TODO
+# kurze Begründung für lineare Laufzeit:
+# Die Funktion durchläuft die Eingabeliste 'values' genau einmal mit einer einfachen 'for'-Schleife.
+# In jeder Iteration werden nur konstante Operationen ausgeführt.
 
 
 def exercise4():
-    # TODO: mindestens mit 3 Testfällen die Äquivalenz der beiden Funktionen testen
-    pass
+    test_cases = [
+        [5, 9, 2, 4, 1, 8, 2],
+        [10, 20, 30, 40, 50],
+        [50, 40, 30, 20, 10],
+        [7],
+        [1, 1, 1, 1, 1],
+        [-1, -5, 0, 10, -20]
+    ]
+
+    print("--- Aufgabe 4 Tests ---")
+    for values in test_cases:
+        result_original = min_before(values)
+        result_linear = min_before_linear(values)
+
+        print(f"Input: {values}")
+        print(f"min_before (original): {result_original}")
+        print(f"min_before_linear (linear): {result_linear}")
+        print(f"Results match   : {result_original == result_linear}\n")
 
 
 # -------------
@@ -285,19 +335,40 @@ def exercise4():
 # A B C D E F
 
 # 1: C B A D F E
-# Möglich: TODO (ja oder nein)
+# Möglich: ja
 # Sequenz der Operationen oder Begründung warum nicht möglich:
-# TODO
+# push(A)
+# push(B)
+# push(C)
+# pop()
+# pop()
+# pop()
+# push(D)
+# pop()
+# push(E)
+# push(F)
+# pop()
+# pop()
 
 # 2: C D F E A B
-# Möglich: TODO (ja oder nein)
+# Möglich: nein
 # Sequenz der Operationen oder Begründung warum nicht möglich:
-# TODO
+# push(A)
+# push(B)
+# push(C)
+# pop()
+# push(D)
+# pop()
+# push(E)
+# push(F)
+# pop()
+# pop()
+# nun kann nur noch B und nicht zuerst A ausgegeben werden
 
 # 3: D C B E A F
-# Möglich: TODO (ja oder nein)
+# Möglich: ja
 # Sequenz der Operationen oder Begründung warum nicht möglich:
-# TODO
+# push(A), push(B), push(C), push(D), pop(), pop(), pop(), push(E), pop(), pop(), push(F), pop()
 
 # b)
 # Welche der folgenden Sequenzen können durch die in der Angabe
@@ -306,14 +377,14 @@ def exercise4():
 # erzeugt werden?
 
 # 1: a f e c b d
-# Möglich: TODO (ja oder nein)
+# Möglich: nein
 # Sequenz der Operationen oder Begründung warum nicht möglich:
-# TODO
+# delete_first(), delete_last(), delete_last(), nun b,c,d -> c nicht als nächstes möglich
 
 # 2: f e a d c b
-# Möglich: TODO (ja oder nein)
+# Möglich: ja
 # Sequenz der Operationen oder Begründung warum nicht möglich:
-# TODO
+# delete_last(), delete_last(), delete_first(), delete_last(), delete_last(), delete_first(),
 
 
 # -------------
@@ -346,8 +417,44 @@ class QueueTODOs:
 
 
 class StackTODOs:
-    # TODO: implement
-    pass
+    def __init__(self):
+        self.__todos = Stack()
+
+    def __len__(self) -> int:
+        """Gibt die aktuelle Anzahl der Aufgaben im Stack zurück."""
+        return len(self.__todos)
+
+    def add_todo(self, task: str) -> None:
+        """Fügt eine neue Aufgabe zum Stack hinzu (LIFO)."""
+        self.__todos.push(task)
+
+    def do_todo(self) -> str | None:
+        """
+        Bearbeitet die nächste Aufgabe vom Stack (LIFO).
+        Gibt die Aufgabe zurück oder None, wenn der Stack leer ist.
+        """
+        if not self.__todos.is_empty():
+            try:
+                return self.__todos.pop()
+            except Empty: # Sollte nicht passieren, da is_empty() geprüft wird, aber zur Sicherheit.
+                return None
+        else:
+            return None
+
+    def reduce_load(self, max_load: int) -> list[str]:
+        """
+        Reduziert die Anzahl der Aufgaben im Stack auf max_load,
+        indem die zuletzt hinzugefügten Aufgaben entfernt werden (LIFO).
+        Gibt eine Liste mit den entfernten Aufgaben zurück.
+        """
+        dropped = []
+        while len(self.__todos) > max_load:
+            try:
+                dropped.append(self.__todos.pop())
+            except Empty: # Sollte nicht passieren, da len() > max_load
+                break # Wenn der Stack plötzlich leer ist, breche ab.
+        return dropped
+
 
 
 def exercise6():
@@ -450,8 +557,8 @@ def the_office():
 
 if __name__ == "__main__":
     # exercise1()
-    exercise2()
+    # exercise2()
     # exercise3()
     # exercise4()
-    # exercise6()
+    exercise6()
     # exercise7()

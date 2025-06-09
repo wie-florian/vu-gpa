@@ -202,7 +202,6 @@ def things_in_space():
     #               'agency': 'ESA'}}
     # }
     planets = {'Merkur', 'Venus', 'Erde', 'Mars', 'Jupiter', 'Uranus', 'Neptun'}
-    # TODO: Lösung hier
     destination_details = {}
 
     for probe_name, probe_data in space_probes.items():
@@ -311,7 +310,7 @@ def read_log() -> dict:
             try:
                 log_data['coffees made'] += parse_coffee_line(cleaned_line)
             except ValueError:
-                print(f"Warnung: Konnte 'coffee made' Zeile nicht parsen: {cleaned_line}")
+                print(f"Konnte 'coffee made' Zeile nicht verarbeiten: {cleaned_line}")
 
     last_valid_line = ""
     for i in range(len(lines) - 1, -1, -1):
